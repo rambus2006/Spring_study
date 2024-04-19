@@ -134,11 +134,11 @@ public class MyRenewController {
 
         return new ResponseEntity<>(bytes, headers, HttpStatus.OK); //바디, 헤더, 시작줄  - 구체적으로 쓰려면 이방법을 쓰자
     }
-    @PostMapping("/test")
+//    @PostMapping("/test")
     // @ModelAttribute를 타입 앞에 붙여주고 메서드의 파라미터 값으로 전달되게 함
     //폼, 쿼리 데이터에 있는 값을 가져오기 위해
     //
-    public String commandObjectTest(@ModelAttribute MyCommandObject myCommandObject) {
-        return myCommandObject.toString();
-    }
+//    public String commandObjectTest(@ModelAttribute MyCommandObject myCommandObject) {
+//        return myCommandObject.toString();
+//    }
 }
