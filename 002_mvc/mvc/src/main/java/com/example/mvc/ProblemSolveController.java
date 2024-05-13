@@ -116,7 +116,7 @@ class VoteHandler{
     //안건 등록
     @PatchMapping("/vote/register_option")
     public HashMap<Object,Object> register(@RequestBody String option,int count){
-
+        
 
     }
     @GetMapping("/vote/show_options")
