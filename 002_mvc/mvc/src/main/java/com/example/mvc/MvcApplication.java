@@ -11,7 +11,7 @@ public class MvcApplication {
 	public static void main(String[] args) {
 		//3-1. 콘솔에 메시지 출력
 		System.out.println("Hello");
-		//3-2. 스프링 부트 애플리케이션실행, MvcApplication 클래스가 애플리케이션의 시작 클래스임을 지정 
+		//3-2. 스프링 부트 애플리케이션실행, MvcApplication 클래스가 애플리케이션의 시작 클래스임을 지정
 		SpringApplication.run(MvcApplication.class, args);
 	}
 
