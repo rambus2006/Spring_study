@@ -10,55 +10,44 @@ import java.util.HashMap;
 
 @RestController
 public class ProblemSolveController {
-    //1.
+    // 1.
     @GetMapping("/get_test")
-    public ResponseEntity<String> get_test(){
+    public ResponseEntity<String> get_test() {
         String responseBody = "GET";
         return ResponseEntity.ok(responseBody);
     }
+
     @PostMapping("/get_test")
-    public ResponseEntity<String> post_test(){
+    public ResponseEntity<String> post_test() {
         String responseBody = "POST";
         return ResponseEntity.ok(responseBody);
     }
-
-
 }
 
 @RestController
-class MessageController{
+class MessageController {
     private String message = "";
 
-    //쿼리 스트링으로 풀기
-//    public void updateMessage1(@RequestParam("message")String message ){
-//        this.message = message;
-//    }
-
-
     @PatchMapping("/update_message/{message}")
-    //pathVariable로 보낸 요청값을 가져온다.
-    public String updateMessage(@PathVariable("message") String newmessage){
-        message = newmessage; //요청값을 message에 넣는다.
-        return message; //메시지값을 리턴한다.
+    public String updateMessage(@PathVariable("message") String newmessage) {
+        message = newmessage;
+        return message;
     }
-
 }
-//만드는 방식이 hashmap과 class를 만들어서 getter,setter 하는 것 이렇게 2가지가 있다.
+
 @RestController
 class CalculatorController {
-    //3번 문제
     @PostMapping("/calc")
     public HashMap<String, Object> calculate(
             @RequestParam("num1") int num1,
             @RequestParam("num2") int num2,
             @RequestParam("op") String op) {
-        HashMap<String,Object> h1 = new HashMap<String,Object>();
-
+        HashMap<String, Object> h1 = new HashMap<>();
         int result = -1;
-        if(op.equals("+")) result = num1 + num2;
-        if(op.equals("-")) result = num1 - num2;
-        if(op.equals("/")) result = num1 / num2;
-        if(op.equals("*")) result = num1 * num2;
+        if (op.equals("+")) result = num1 + num2;
+        if (op.equals("-")) result = num1 - num2;
+        if (op.equals("/")) result = num1 / num2;
+        if (op.equals("*")) result = num1 * num2;
 
         h1.put("num1", num1);
         h1.put("num2", num2);
@@ -67,58 +56,80 @@ class CalculatorController {
         return h1;
     }
 
-    //4번
     private int visitCount = 0;
 
     @PostMapping("/update_visit_count")
     public String visit() {
-        visitCount+=1;
-        return "" + visitCount;
-        // return String.valueOf(visitCount);
+        visitCount += 1;
+        return String.valueOf(visitCount);
     }
-    //5번
+
     @PostMapping("/update_visit_count_json")
-    public HashMap<String, Object> visitController(){
+    public HashMap<String, Object> visitController() {
         visitCount++;
-        HashMap<String,Object> result = new HashMap<>();
-        result.put("visit_count",visitCount);
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("visit_count", visitCount);
         return result;
     }
 
-    ArrayList<String> email = new ArrayList<>();
-    //6번
+    private ArrayList<String> email = new ArrayList<>();
+
     @PostMapping("/register_email")
-    public HashMap<String,Object> register_email(@RequestBody String emails) {
-        System.out.println(emails);
-        HashMap<String,Object> result = new HashMap<>();
-        String[] mailstring = emails.split(",");
-        for(int i=0;i<mailstring.length;i++){
-            email.add(mailstring[i]);
+    public HashMap<String, Object> register_email(@RequestBody String[] emails) {
+        for (String emailStr : emails) {
+            email.add(emailStr);
         }
+        HashMap<String, Object> result = new HashMap<>();
         result.put("email_addresses", email);
         return result;
     }
-
 }
-class Vote{
-    public String option;
-    public int count;
 
-    public String getOption() {return option;}public void setOption(String option) {this.option = option;}public int getCount() {return count;}public void setCount(int count) {this.count = count;}
-}
-@RestController
-class VoteHandler{
-    //안에 있는 객체를 넣는 거
-    ArrayList<Object> agenda = new ArrayList<>();
-    //바깥쪽의 result
-    HashMap<Object,Object> result  = new HashMap<>();
-    //7번
-    //안건 등록
-    @PatchMapping("/vote/register_option")
-    public HashMap<Object,Object> register(@RequestBody String option,int count){
-        
+class Vote {
+    private String option;
+    private int count;
 
+    public String getOption() {
+        return option;
     }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+}
+
+@RestController
+class VoteHandler {
+    private ArrayList<Vote> agenda = new ArrayList<>();
+    private HashMap<String, Object> result = new HashMap<>();
+
+    @PatchMapping("/vote/register_option")
+    public HashMap<String, Object> register(@RequestBody Vote vote) {
+        agenda.add(vote);
+        result.put("agenda", agenda);
+        return result;
+    }
+
     @GetMapping("/vote/show_options")
+    public HashMap<String, Object> showOptions() {
+        result.put("agenda", agenda);
+        return result;
+    }
+
     @PostMapping("/vote/make_vote")
+    public HashMap<String, Object> makeVote(@RequestBody String option) {
+        for (Vote v : agenda) {
+            if (v.getOption().equals(option)) {
+            }
+        }
+        return null;
+    }
 }
