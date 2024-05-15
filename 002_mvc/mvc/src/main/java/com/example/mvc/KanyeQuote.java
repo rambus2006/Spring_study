@@ -1,6 +1,5 @@
 package com.example.mvc;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KanyeQuote {
@@ -9,7 +8,7 @@ public class KanyeQuote {
 
     @Override
     public String toString() {
-        return "ResponseEntity{" +
+        return "KanyeQuote{" +
                 "quote='" + quote + '\'' +
                 '}';
     }
