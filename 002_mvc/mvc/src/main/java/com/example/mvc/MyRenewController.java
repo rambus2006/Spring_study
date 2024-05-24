@@ -17,7 +17,9 @@ import java.util.Enumeration;
 
 //원래는 클래스 하나 파서 만들어야 한다.
 // 커맨드 객체로 사용될 클래스 정의
+//클라이언트로부터의 데이터를 담는다.
 class MyCommandObject {
+    //필드
     private String value1;
     private Integer value2;
 
@@ -31,12 +33,15 @@ class MyCommandObject {
     public String toString() {return "MyCommandObject{value1='" + value1 + '\'' + ", value2=" + value2 + '}';}
 }
 
+//컨트롤러 클래스
 @RestController
+//경로 설정
 @RequestMapping("/renew")
 public class MyRenewController {
 
     //</echo>
     // produces 옵션을 통해서 미디어 타입 지정 가능 (유추해서 자동으로 지정하게 할 수도 있지만 가급적 써주는 것을 권장)
+    //get요청 처리
     @GetMapping(value = "/echo", produces = MediaType.TEXT_PLAIN_VALUE) //주소는 /renew/echo이다. 어노테이션 기본값은 value라 "/echo"만 써도 된다.
     // * produces = MediaType.TEXT_PLAIN_VALUE : 응답에 대한 타입을 알려준다. 생략해도되지만 쓰는게 낫다.
 
@@ -57,12 +62,15 @@ public class MyRenewController {
         // Content-Type 헤더의 경우 produces 옵션을 제공하여 미디어 타입 지정 가능
         return bytesToString; //@ResponseBody로 내용이 들어간ㄷ.
     }
+    //get요청이 .renew/hello 경로로 올 때 이 메서드가 처리한다.
     @RequestMapping(value="/hello", method=RequestMethod.GET)
+    //경로 설정
     @GetMapping("/echo")
+    // 요청과 응답 객체를 파라미터로 받는 메서드를 정의한다.
     public void echo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 메서드 정보 접근
-        String method = request.getMethod();
-        System.out.println("Method : " + method);
+        String method = request.getMethod();//요청한 http 메서드를 얻어온다.
+        System.out.println("Method : " + method); //http 메서드를 콘솔에 출력한다.
 
         // 주소 정보 접근
         String uri = request.getRequestURI();
@@ -87,11 +95,12 @@ public class MyRenewController {
         // 요청 메시지의 바디 데이터 접근
         // 1. 바디 데이터를 추가하기 위해서는 POSTMAN과 같은 클라이언트 프로그램을 사용해야 함
         // 2. 일반적으로, GET 요청은 바디 데이터를 추가하지 않는 것이 권장되며, 데이터를 보내기 위해서는 보통 쿼리스트링을 이용함
+        //바이트 배열을 utf-8 문자열로 반환한다.
         byte[] bytes = request.getInputStream().readAllBytes();
         String bytesToString = new String(bytes, StandardCharsets.UTF_8);
         System.out.println(bytesToString);
 
-        // 응답 헤더 설정
+        // 응답 헤더 설정(content-type 설정)
         response.setHeader("Content-Type", "text/plain; charset=utf-8");
         // 전달받은 body 텍스트를 그대로 응답하도록 설정
         response.getWriter().write(bytesToString);
