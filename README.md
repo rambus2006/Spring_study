@@ -4,10 +4,10 @@
 
 ## di
 
-- [01_MyBean(0312)]
-- [02_Person(0312)]
-- [03_MyConfig(0313)]
-- [04_Calculator(0313)]
+- [01_MyBean(0312)](https://github.com/rambus2006/Spring_study/tree/master/001_di/di_answer/src/main/java/com/example/di/MyBean.java)
+- [02_Person(0312)](https://github.com/rambus2006/Spring_study/tree/master/001_di/di_answer/src/main/java/com/example/di/Person.java)
+- [03_MyConfig(0313)](https://github.com/rambus2006/Spring_study/tree/master/001_di/di_answer/src/main/java/com/example/di/MyConfig.java)
+- [04_Calculator(0313)](https://github.com/rambus2006/Spring_study/tree/master/001_di/di_answer/src/main/java/com/example/di/Calculator.java)
 
 ## mvc
 
