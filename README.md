@@ -1,17 +1,20 @@
 <div style="display: flex; align-items: flex-start; align-self:center"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> 
 
 # Spring 학교수업내용]
-===========
-### di
----
 
+## di
+---
+### 001
 <b>24.03.12</b>
 - [01_MyBean]
 - [02_Person]
-- [03_MyConfig]
-- [04_Calculator]
+### 002
+<b>24.03.12</b>
+- [01_MyConfig]
+- [02_Calculator]
 
-### mvc
+## mvc
+---
 - [01_MvcApplication(0315)]
 - [02_Mycontroller(0328)]
 - [03_ModelAttribute(0404)]
