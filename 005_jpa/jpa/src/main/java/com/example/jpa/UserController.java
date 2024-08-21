@@ -45,14 +45,23 @@ public class UserController {
     }
 
     // R
+//    @GetMapping("/{id}")
+//    public ResponseEntity<User> getUser(@PathVariable("id") Integer id) {
+//        Optional<User> user = userRepository.findById(id);
+//        // https://stackoverflow.com/questions/26550124/spring-returning-empty-http-responses-with-responseentityvoid-doesnt-work
+//        // If returned value is Optional, there are convenient method, returned ok() or notFound():
+//        return ResponseEntity.of(user);
+//    }
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") Integer id) {
-        Optional<User> user = userRepository.findById(id);
-        // https://stackoverflow.com/questions/26550124/spring-returning-empty-http-responses-with-responseentityvoid-doesnt-work
-        // If returned value is Optional, there are convenient method, returned ok() or notFound():
-        return ResponseEntity.of(user);
+    public ResponseEntity<User> getUser(@PathVariable("id") Integer id){
+        Optional<User> op = userRepository.findById(id);
+        if(op.isPresent()){
+            return ResponseEntity.ok(op.get()); //값이 있으면 가져온다.
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
     }
-
     // U
     @PatchMapping("/{id}")
     public ResponseEntity<User> patchUser(@PathVariable("id") Integer id, @RequestBody User modified) {

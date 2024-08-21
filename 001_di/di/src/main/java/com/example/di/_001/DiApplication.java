@@ -21,16 +21,7 @@ public class DiApplication {
 				System.out.println(beanName);
 			}
 		}
-//	[등록한 Bean을 사용해보자]
-		Person p = (Person) context.getBean("myPerson"); //타입 추론이 아제 가능하다. (var p) 가능 
-		p.sayName();
 
-		//왜 이렇게 하는지 알아야 함! + autowired도 꼭 써줘야 한다. Bean은 맨 앞에만 소문자로 바꿔준다.
-		MyCalculatorService myCalculatorService = (MyCalculatorService) context.getBean("myCalculatorService");
-		System.out.println(myCalculatorService.calcAdd(3,4));
-
-		Calculator calculator = (Calculator) context.getBean("calculator");
-		System.out.println(calculator.add(5,4));
 	}
 
 }
