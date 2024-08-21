@@ -4,14 +4,12 @@
 
 ## di
 
-### 001
 <b>24.03.12</b>
 - [01_MyBean]
 - [02_Person]
-### 002
 <b>24.03.12</b>
-- [01_MyConfig]
-- [02_Calculator]
+- [03_MyConfig]
+- [04_Calculator]
 
 ## mvc
 
