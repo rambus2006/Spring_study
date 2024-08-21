@@ -2,6 +2,12 @@
 
 #Spring 학교수업내용]
 ===========
+### di
+<b>24.03.12</b>
+- [01_MyBean]
+- [02_Person]
+- [03_MyConfig]
+- [04_Calculator]
 
 ### mvc
 - [01_MvcApplication(0315)]
