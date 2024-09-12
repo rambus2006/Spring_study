@@ -20,8 +20,6 @@ public class UserController {
     //우리는 쓰기만 하면된다.
     // C(create)
     @PostMapping
-
-
     public ResponseEntity<User> postUser(@RequestBody User user) throws URISyntaxException { //@RequestBody는 Body로 받는 데이터를 받는다. user와 관련된 데이터 전달, 객체로 바뀜.
         user.setCreatedAt(new Date());  //정보를 새로 만들어서 넣어줌. id는 있으면 안됨. json에 일부만 주면 일부만 남아있고, 나머지는 null
 
