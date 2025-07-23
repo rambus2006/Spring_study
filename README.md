@@ -1,7 +1,7 @@
 <div style="display: flex; align-items: flex-start; align-self:center"><img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="65" height="65" /></div> 
 
 # Spring 학교수업내용]
-
+## Spring의 개념 
 ## di
 
 - [01_MyBean(0312)](https://github.com/rambus2006/Spring_study/tree/master/001_di/di_answer/src/main/java/com/example/di/MyBean.java)
